@@ -9,9 +9,9 @@
     name: ogn 
     group: ogn 
  
-# NOTE: reports "changed" each time, caused by virtual packages
 - name: install required packages
-  apt: name={{ item }} state=present
+  apt: 
+    name: "{{ item }}" 
   with_items:
   - rtl-sdr
   - libconfig-dev
