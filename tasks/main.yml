@@ -115,7 +115,13 @@
   when: install_config.changed == True
 
 - name: enable and start ogn-rf
-  service: name=ogn-rf enabled=yes state=restarted
+  service: 
+    name: ogn-rf 
+    enabled: yes 
+    state: started
 
 - name: enable and start ogn-decode
-  service: name=ogn-decode enabled=yes state=restarted
+  service: 
+    name: ogn-decode 
+    enabled: yes 
+    state: started
