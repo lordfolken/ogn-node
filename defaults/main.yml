@@ -1,2 +1,5 @@
 ---
 inside_old_box: false # true for debian wheezy, updates glibc
+ogn_services: 
+  - ogn-rf.service
+  - ogn-decode.service

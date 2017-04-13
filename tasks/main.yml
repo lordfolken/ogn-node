@@ -92,37 +92,31 @@
   tags:
     - updatesiteconf
 
-- name: create ogn-rf.service unit file
+- name: create ogn systemd service unit files
   copy: 
-    src: ogn-rf.service 
-    dest: "/etc/systemd/system/ogn-rf.service" 
+    src: "{{ item }}" 
+    dest: "/etc/systemd/system/{{ item }}" 
     owner: root 
     group: root 
     mode: 0644
-  register: install_config
-
-- name: create ogn-decode.service unit file
-  copy: 
-    src: ogn-decode.service 
-    dest: "/etc/systemd/system/ogn-decode.service" 
-    owner: root 
-    group: root 
-    mode: 0644
-  register: install_config
+  with_items: "{{ ogn_services }}"
+  register: "install_config"
+  tags: start
 
 - name: notify systemd of config changes
   systemd: 
+    name: "{{ item.item }}"  
     daemon_reload: yes
-  when: install_config.changed == True
+    enabled: true
+    state: restarted
+  with_items: "{{ install_config.results }}"
+  when: "{{ item.changed == true }}" 
+  tags: start
 
-- name: enable and start ogn-rf
+- name: enable and start services 
   service: 
-    name: ogn-rf 
+    name: "{{ item }}"
     enabled: yes 
     state: started
-
-- name: enable and start ogn-decode
-  service: 
-    name: ogn-decode 
-    enabled: yes 
-    state: started
+  with_items: "{{ ogn_services }}"
+  tags: start
