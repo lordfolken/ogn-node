@@ -21,12 +21,16 @@
   - libconfig9
 
 - name: download rtlsdr ogn binary
-  get_url: url={{ rtlsdr_ogn_bin_url }} dest=/opt/{{ rtlsdr_ogn_bin }}
+  get_url: 
+    url: "{{ rtlsdr_ogn_bin_url }}" 
+    dest: "/opt/{{ rtlsdr_ogn_bin }}"
   register: ogn_download
   tags: updateogn
 
 - name: delete old directory
-  file: path=/opt/{{ item }} state=absent
+  file: 
+    path: "/opt/{{ item }}" 
+  state: absent
   when: ogn_download.changed
   with_items:
     - rtlsdr-ogn
