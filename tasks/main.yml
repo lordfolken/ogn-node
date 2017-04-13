@@ -85,12 +85,19 @@
     group: root
 
 - name: create ogn site config file
-  template: src=site.conf.j2 dest=/etc/rtlsdr-ogn/site.conf
+  template: 
+    src: "site.conf.j2" 
+    dest: "/etc/rtlsdr-ogn/site.conf"
   tags:
     - updatesiteconf
 
 - name: create ogn-rf.service unit file
-  copy: src=ogn-rf.service dest=/etc/systemd/system/ogn-rf.service owner=root group=root mode='0644'
+  copy: 
+    src: ogn-rf.service 
+    dest: "/etc/systemd/system/ogn-rf.service" 
+    owner: root 
+    group: root 
+    mode: 0644
   register: install_config
 
 - name: create ogn-decode.service unit file
