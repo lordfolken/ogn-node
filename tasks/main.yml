@@ -57,7 +57,7 @@
 
 - name: change ownership recursive
   file: 
-    path: /opt/rtlsdr-ogn/ 
+    path: "/opt/rtlsdr-ogn/"
     state: directory 
     owner: root 
     group: root 
@@ -78,7 +78,11 @@
   tags: updateogn
 
 - name: create ogn config directory
-  file: path=/etc/rtlsdr-ogn state=directory owner=root group=root
+  file: 
+    path: "/etc/rtlsdr-ogn" 
+    state: directory 
+    owner: root 
+    group: root
 
 - name: create ogn site config file
   template: src=site.conf.j2 dest=/etc/rtlsdr-ogn/site.conf
