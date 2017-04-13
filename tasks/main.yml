@@ -64,20 +64,6 @@
     recurse: yes
   tags: updateogn
 
-- name: create fifo
-  command: mkfifo /opt/rtlsdr-ogn/ogn-rf.fifo 
-  args: 
-    creates: "/opt/rtlsdr-ogn/ogn-rf.fifo"
-  tags: updateogn
-
-- name: change fifo ownership
-  file: 
-    path: "/opt/rtlsdr-ogn/ogn-rf.fifo" 
-    owner: ogn 
-    group: ogn 
-    mode: 0644
-  tags: updateogn
-
 - name: create ogn config directory
   file: 
     path: "/etc/rtlsdr-ogn" 

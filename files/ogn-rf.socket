@@ -1,0 +1,8 @@
+[Socket]
+ListenFIFO=/run/ogn-rf.socket 
+SocketUser=ogn
+SocketGroup=ogn
+SocketMode=0660
+
+[Install]
+WantedBy=sockets.target
