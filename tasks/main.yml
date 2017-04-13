@@ -47,11 +47,21 @@
   tags: updateogn
 
 - name: symlink directory
-  file: src=/opt/{{ rtlsdr_ogn_dir }} path=/opt/rtlsdr-ogn state=link owner=root group=root
+  file: 
+    src: "/opt/{{ rtlsdr_ogn_dir }}" 
+    path: "/opt/rtlsdr-ogn" 
+    state: link 
+    owner: root 
+    group: root
   tags: updateogn
 
 - name: change ownership recursive
-  file: path=/opt/rtlsdr-ogn/ state=directory owner=root group=root recurse=yes
+  file: 
+    path: /opt/rtlsdr-ogn/ 
+    state: directory 
+    owner: root 
+    group: root 
+    recurse: yes
   tags: updateogn
 
 - name: create fifo
