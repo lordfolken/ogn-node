@@ -30,7 +30,7 @@
 - name: delete old directory
   file: 
     path: "/opt/{{ item }}" 
-  state: absent
+    state: absent
   when: ogn_download.changed
   with_items:
     - rtlsdr-ogn
@@ -66,6 +66,7 @@
 
 - name: create fifo
   command: mkfifo /opt/rtlsdr-ogn/ogn-rf.fifo 
+  args: 
     creates: "/opt/rtlsdr-ogn/ogn-rf.fifo"
   tags: updateogn
 
