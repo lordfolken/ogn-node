@@ -1,10 +1,13 @@
 ---
 
 - name: add group ogn
-  group: name=ogn
+  group: 
+    name: ogn
 
 - name: add user ogn
-  user: name=ogn group=ogn state=present
+  user: 
+    name: ogn 
+    group: ogn 
  
 # NOTE: reports "changed" each time, caused by virtual packages
 - name: install required packages
