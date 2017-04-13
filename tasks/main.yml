@@ -110,7 +110,8 @@
   register: install_config
 
 - name: notify systemd of config changes
-  command: systemctl daemon-reload
+  systemd: 
+    daemon_reload: yes
   when: install_config.changed == True
 
 - name: enable and start ogn-rf
