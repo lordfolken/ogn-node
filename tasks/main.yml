@@ -37,7 +37,13 @@
   tags: updateogn
 
 - name: ...and extract it
-  unarchive: src=/opt/{{ rtlsdr_ogn_bin }} dest=/opt/ creates=/opt/{{ rtlsdr_ogn_dir }} copy=no owner=root group=root
+  unarchive: 
+    src: "/opt/{{ rtlsdr_ogn_bin }}" 
+    dest: "/opt/" 
+    creates: "/opt/{{ rtlsdr_ogn_dir }}" 
+    copy: no 
+    owner: root 
+    group: root
   tags: updateogn
 
 - name: symlink directory
