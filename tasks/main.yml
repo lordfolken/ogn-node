@@ -58,11 +58,11 @@
     - updatesiteconf
 
 - name: create ogn-rf.service unit file
-  copy: src=ogn-rf.service dest=/etc/systemd/system/ogn-rf.service owner=root group=root mode='0775'
+  copy: src=ogn-rf.service dest=/etc/systemd/system/ogn-rf.service owner=root group=root mode='0644'
   register: install_config
 
 - name: create ogn-decode.service unit file
-  copy: src=ogn-decode.service dest=/etc/systemd/system/ogn-decode.service owner=root group=root mode='0775'
+  copy: src=ogn-decode.service dest=/etc/systemd/system/ogn-decode.service owner=root group=root mode='0644'
   register: install_config
 
 - name: notify systemd of config changes
@@ -70,7 +70,7 @@
   when: install_config.changed == True
 
 - name: enable and start ogn-rf
-  service: name=ogn-rf enabled=yes state=started
+  service: name=ogn-rf enabled=yes state=restarted
 
 - name: enable and start ogn-decode
-  service: name=ogn-decode enabled=yes state=started
+  service: name=ogn-decode enabled=yes state=restarted
