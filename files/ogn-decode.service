@@ -3,7 +3,6 @@ Description=Decode ogn/flarm data given by a fifo and forward it to glidernet.or
 After=network.target time-sync.target
 
 [Service]
-User=ogn
 WorkingDirectory=/opt/rtlsdr-ogn
 ExecStart=/opt/rtlsdr-ogn/ogn-decode /etc/rtlsdr-ogn/site.conf
 
