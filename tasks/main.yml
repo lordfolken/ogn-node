@@ -101,7 +101,12 @@
   register: install_config
 
 - name: create ogn-decode.service unit file
-  copy: src=ogn-decode.service dest=/etc/systemd/system/ogn-decode.service owner=root group=root mode='0644'
+  copy: 
+    src: ogn-decode.service 
+    dest: "/etc/systemd/system/ogn-decode.service" 
+    owner: root 
+    group: root 
+    mode: 0644
   register: install_config
 
 - name: notify systemd of config changes
