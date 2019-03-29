@@ -10,7 +10,7 @@
     group: ogn 
  
 - name: install required packages
-  apt: 
+  package: 
     name: "{{ item }}" 
   with_items:
   - rtl-sdr
